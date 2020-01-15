@@ -1,0 +1,37 @@
+apply plugin: 'war'
+apply plugin: "fish.payara.micro-gradle-plugin"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven{
+			url "https://plugins.gradle.org/m2/"
+		}
+    }
+    dependencies {
+        classpath "gradle.plugin.fish.payara.gradle.plugins:payara-micro-gradle-plugin:1.0.3"
+        
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.eclipse.microprofile/microprofile
+	providedCompile 'org.eclipse.microprofile:microprofile:3.0'
+	//providedCompile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.29.1'
+	providedCompile 'org.projectlombok:lombok:1.16.4'
+	// https://mvnrepository.com/artifact/fish.payara.api/payara-api
+	providedCompile 'fish.payara.api:payara-api:4.1.2.172'
+
+	//postgres
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.0.1.Final'
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
+	//Se interpone entre jpa y hibernate
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.0.1.Final'    
+
+}
